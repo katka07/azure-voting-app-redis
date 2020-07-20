@@ -8,7 +8,9 @@ pipeline {
             }
         }
 	stage('Docker Build') {
-		sh(script: "docker images -a")
+		steps {
+			sh(script: "docker images -a")
+		}
 	}
     }
 }
