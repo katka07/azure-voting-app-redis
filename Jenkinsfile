@@ -33,7 +33,7 @@ pipeline {
         stage('Docker Push') {
             steps {
                 echo "Running in $WORKSPACE"
-                dir("$WORKSPACE/avp") {
+                dir("$WORKSPACE/azure-vote") {
                     script {
                         //docker.withRegistry('', 'dockerhub')
                         def image = docker.build('katka05/voting-app:2025')
