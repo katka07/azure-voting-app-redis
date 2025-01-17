@@ -30,6 +30,18 @@ pipeline {
                 }
             }
         }
+        stage('Docker Push') {
+            steps {
+                echo "Running in $WORKSPACE"
+                dir("$WORKSPACE/avp") {
+                    script {
+                        docker.withRegistry('', 'dockerhub')
+                        def image = docker.build('katka05/voting-app:2025')
+                        image.push()
+                    }
+                }
+            }
+        }
     }
     post {
         always {
