@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Start App') {
             steps {
-                sh(script: 'docker compose -d')
+                sh(script: 'docker compose up -d')
             }
         }
         stage('Run Tests') {
