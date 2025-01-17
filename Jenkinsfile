@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent 'ub1'
 
     stages {
         stage('Verify Branch') {
