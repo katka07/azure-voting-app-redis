@@ -35,11 +35,16 @@ pipeline {
                 echo "Running in $WORKSPACE"
                 dir("$WORKSPACE/azure-vote") {
                     script {
-                        //docker.withRegistry('', 'dockerhub')
+                        docker.withRegistry('', 'dockerhub')
                         def image = docker.build('katka05/voting-app:2025')
                         image.push()
                     }
                 }
+            }
+        }
+        stage('Analyze image') {
+            steps {
+                sh 'docker-scout cves atka05/voting-app:2025 --only-severity critical,high'
             }
         }
     }
