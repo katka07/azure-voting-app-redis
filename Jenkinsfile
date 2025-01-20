@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Analyze image') {
             steps {
-                sh 'sudo docker-scout cves katka05/voting-app:2025 --only-severity critical,high'                
+                sh 'docker-scout cves katka05/voting-app:2025 --only-severity critical,high'                
             }
         }
     }
