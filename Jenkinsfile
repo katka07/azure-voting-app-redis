@@ -59,9 +59,9 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            sh(script: 'docker compose down')
-        }
-    }
+    // post {
+    //     always {
+    //         sh(script: 'docker compose down')
+    //     }
+    // }
 }
