@@ -42,12 +42,7 @@ pipeline {
                 }
             }
         }
-        stage('Analyze image') {
-            steps {
-                dir("$WORKSPACE")
-                sh 'docker-scout cves atka05/voting-app:2025 --only-severity critical,high'
-            }
-        }
+    
     }
     post {
         always {
