@@ -47,6 +47,17 @@ pipeline {
                 sh 'docker-scout cves katka05/voting-app:2025 --only-severity critical,high'                
             }
         }
+        stage('QA Depoly') {
+            environment {
+                KUBECONFIG = credentials('kube_config')
+            }
+            when {
+                branch 'feature/k8s-deploy'
+            }
+            steps {
+                sh "kubectl apply -f azure-vote-all-in-one-redis.yaml --kubeconfig $KUBECONFIG"
+            }
+        }
     }
     post {
         always {
